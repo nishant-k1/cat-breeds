@@ -2,7 +2,7 @@
   "name": "cat-breads",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/nishant-k-290195.io/cat-breads",
+  "homepage": " https://nishant-k-290195.github.io/cat-breads/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
