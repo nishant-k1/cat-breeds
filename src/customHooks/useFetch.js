@@ -1,7 +1,8 @@
 import React from 'react';
 
-export const useFetch = (URL) => {
+export const useFetch = (URL, PAGE) => {
     const [data, setData] = React.useState([]);
+
     React.useEffect(() => {
         try {
             (
@@ -15,7 +16,7 @@ export const useFetch = (URL) => {
         } catch (error) {
             console.log(error)
         }
-    }, []);
+    }, [PAGE]);
 
     return data
 }
