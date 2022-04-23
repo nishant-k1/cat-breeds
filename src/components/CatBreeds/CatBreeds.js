@@ -11,60 +11,70 @@ import Pagination from '../Pagination/Pagination';
 
 const CatBreeds = () => {
     const cat_breed_url = `https://api.thecatapi.com/v1/breeds`;
-    const catBreeds = useFetch(cat_breed_url);
+    const [page, setPage] = React.useState(1);
+    const catBreedsList = useFetch(cat_breed_url, page);
+    const [catCountPerPage] = React.useState(6);
+    let last_cat_list_item_index = page * catCountPerPage
+    let first_cat_list_item_index = (last_cat_list_item_index + 1) - catCountPerPage
+    let catBreeds = catBreedsList.slice(first_cat_list_item_index, last_cat_list_item_index + 1)
 
     return (
-        <Container>
+        <React.Fragment>
             {
-                !catBreeds && <Loader />
+                !catBreeds.length > 0 &&
+                    <Container sx={{display:"grid", justifyContent:"center", alignItems:'center', height:'80vh'}}>
+                        <Loader />
+                    </Container>
             }
+
             {
-                catBreeds
+                catBreeds.length > 0
                     &&  <Container>
                             <Grid container spacing={4}>
-                                <Grid item>
-                                    <Pagination />
+                                <Grid item sx={{margin:"4rem 0", display:"grid", justifyContent:"center"}} xs={12} >
+                                    <Pagination page={page} setPage={setPage} catCountPerPage={catCountPerPage} />
                                 </Grid>
-                                    <Grid item container spacing={4} >
-                                        {
-                                            catBreeds.map(item => {
-                                                    return (
-                                                        <React.Fragment>
-                                                            {
-                                                                item.image
-                                                                    &&  <Grid item xs={4}>
-                                                                            <Card sx={{ maxWidth: 345 }}>
-                                                                                <CardActionArea>
-                                                                                <CardMedia
-                                                                                    component="img"
-                                                                                    height="140"
-                                                                                    image={item.image.url}
-                                                                                    alt="green iguana"
-                                                                                />
-                                                                                <CardContent>
-                                                                                    <Typography gutterBottom variant="h5" component="div">
-                                                                                        {item.name}
-                                                                                    </Typography>
-                                                                                    <Typography variant="body2" color="text.secondary">
-                                                                                        {item.description}
-                                                                                    </Typography>
-                                                                                </CardContent>
-                                                                                </CardActionArea>
-                                                                            </Card>
-                                                                        </Grid>
-                                                            }
-                                                        </React.Fragment>
-                                                    )
-                                                })
-                                        }
+
+                                <Grid item container spacing={4} >
+                                    {
+                                        catBreeds.map(item => {
+                                                return (
+                                                    <React.Fragment key={item.id}>
+                                                        {
+                                                            item.image
+                                                                &&  <Grid item xs={12} sm={6} md={4}>
+                                                                        <Card sx={{ maxWidth: 345 }}>
+                                                                            <CardActionArea>
+                                                                            <CardMedia
+                                                                                component="img"
+                                                                                height="140"
+                                                                                image={item.image.url}
+                                                                                alt={item.name}
+                                                                            />
+                                                                            <CardContent>
+                                                                                <Typography gutterBottom variant="h5" component="div">
+                                                                                    {item.name}
+                                                                                </Typography>
+                                                                                <Typography variant="body2" color="text.secondary">
+                                                                                    {item.description}
+                                                                                </Typography>
+                                                                            </CardContent>
+                                                                            </CardActionArea>
+                                                                        </Card>
+                                                                    </Grid>
+                                                        }
+                                                    </React.Fragment>
+                                                )
+                                        })
+                                    }
                                 </Grid>
-                                <Grid item>
-                                    <Pagination />
+                                <Grid item sx={{margin:"4rem 0", display:"grid", justifyContent:"center"}} xs={12} >
+                                    <Pagination page={page} setPage={setPage} catCountPerPage={catCountPerPage} />
                                 </Grid>
                             </Grid>
-                        </Container>
+                    </Container>
             }
-        </Container>
+        </React.Fragment>
     )
 
 }
