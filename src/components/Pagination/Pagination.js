@@ -1,18 +1,21 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import PaginationMui from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
-const Pagination = ({page, setPage, catCountPerPage}) => {
+const Pagination = ({page, setPage, pageCount}) => {
+
     const handleChange = (event, value) => {
       setPage(value);
     };
+    const [count, setCount] = React.useState(pageCount);
+    React.useEffect(() => {
+        setCount(pageCount)
+    }, [pageCount])
 
     return (
         <Stack spacing={2}>
-            {/* <Typography>Page: {page}</Typography> */}
             <PaginationMui
-                count={catCountPerPage}
+                count={count}
                 page={page}
                 onChange={handleChange}
                 showFirstButton
