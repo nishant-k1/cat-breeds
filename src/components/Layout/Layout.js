@@ -1,12 +1,16 @@
 import * as React from 'react';
 import HomePage from '../../pages/HomePage/HomePage';
-import AppBar from '../AppBar/AppBar'
+import NavBar from '../NavBar/NavBar'
 
 const Layout = () => {
+  const [searchQuery, setSearchQuery] = React.useState("");
   return (
     <React.Fragment>
-      <AppBar />
-      <HomePage />
+      <NavBar
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+      <HomePage searchQuery={searchQuery} />
     </React.Fragment>
   );
 }
