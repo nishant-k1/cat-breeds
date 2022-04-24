@@ -12,35 +12,43 @@ import Pagination from '../Pagination/Pagination';
 const CatBreedsWithSearchedQuery = ({searchQuery}) => {
     const cat_breed_url = `https://api.thecatapi.com/v1/breeds`;
     const [page, setPage] = React.useState(1);
-    const fetchedCatBreedList = useFetch(cat_breed_url, page);
-
-    const catBreedList = fetchedCatBreedList.filter(item => {
-        if(item.name.replace(/\s/g, "").trim().toLowerCase()
-            .includes(searchQuery.replace(/\s/g, "").trim().toLowerCase())){
-            return item
-        }
-        return null
-    })
-
-    // catBreedList[0] && alert(JSON.stringify(catBreedList));
+    const catBreedsList = useFetch(cat_breed_url, page);
+    const [pageCount, setPageCount] = React.useState(null);
     const [catBreeds, setCatBreeds] = React.useState([]);
+    const [catBreedsSearched, setCatBreedsSearched] = React.useState([]);
 
-    const [pageCount] = React.useState(6);
+    React.useEffect(() => {
+        if(catBreedsList.length > 0){
+            const itemCount = 9;
+            setPageCount(() => Math.ceil(catBreedsList.length/itemCount));
+            const last_item_index = page * itemCount;
+            const first_item_index = last_item_index - itemCount;
+            setCatBreeds(() => catBreedsList.slice(first_item_index, last_item_index));
 
-    const last_list_item_index = page * pageCount;
-    const first_list_item_index = (last_list_item_index + 1) - pageCount;
+            setCatBreedsSearched(() => (catBreeds.filter(item => {
+                if(item.name.replace(/\s/g, "").trim().toLowerCase()
+                    .includes(searchQuery.replace(/\s/g, "").trim().toLowerCase())){
+                    return item
+                }
+                return null
+            })))
+        }
+    }, [
+        catBreedsList,
+        catBreedsList.length,
+        pageCount,
+        page,
+        catBreeds,
+        catBreeds.length,
+        searchQuery
+    ]);
 
-    // alert(JSON.stringify(catBreedsPaginated));
-    // const catBreedsPaginated = catBreedList.slice(first_list_item_index, last_list_item_index + 1);
-
-    catBreedList && setCatBreeds(catBreedList);
-    // alert(JSON.stringify(catBreeds));
 
     return (
         <React.Fragment>
             {
                 // !catBreedList[0]
-                (catBreeds[0] === null)
+                !(catBreedsSearched.length > 0)
                     &&  <Container sx={
                             {
                                 display:"grid",
@@ -52,8 +60,8 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                             <Loader />
                         </Container>
             }
-            {/* {
-                (catBreeds[0] === 0)
+            {
+                !catBreedsSearched
                     &&  <Container sx={
                             {
                                 display:"grid",
@@ -69,9 +77,9 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                                 Sorry!! No results found 😭
                             </Typography>
                         </Container>
-            } */}
+            }
             {
-                (catBreeds[0] !== null)
+                catBreedsSearched.length > 0
                     &&  <Container>
                             <Grid
                                 container
@@ -98,7 +106,7 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                                     spacing={4}
                                 >
                                     {
-                                        catBreedList.map(item => {
+                                        catBreedsSearched.map(item => {
                                             return (
                                                 <React.Fragment key={item.id}>
                                                     {
