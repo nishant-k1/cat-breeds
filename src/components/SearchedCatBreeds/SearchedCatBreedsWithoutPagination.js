@@ -3,7 +3,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Container } from '@mui/material';
+import { Container } from '@mui/material';
+import { Button, CardActions } from '@mui/material';
 import { Grid } from '@mui/material';
 
 const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
@@ -26,29 +27,36 @@ const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
                                         sm={6}
                                         md={4}
                                     >
-                                        <Card sx={{ maxWidth: 345 }}>
-                                            <CardActionArea>
-                                                <CardMedia
-                                                    component="img"
-                                                    height="140"
-                                                    image={item.image.url}
-                                                    alt={item.name}
-                                                />
-                                            <CardContent>
-                                                <Typography
-                                                    gutterBottom
-                                                    variant="h5"
-                                                    component="div">
-                                                    {item.name}
-                                                </Typography>
-                                                <Typography
-                                                    variant="body2"
-                                                    color="text.secondary">
-                                                    {item.description}
-                                                </Typography>
-                                            </CardContent>
-                                            </CardActionArea>
-                                        </Card>
+                                    <Card sx={{ maxWidth: 345 }}>
+                                        <CardMedia
+                                                component="img"
+                                                height="140"
+                                                image={item.image.url}
+                                                alt={item.name}
+                                            />
+                                        <CardContent>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="div">
+                                                {item.name}
+                                            </Typography>
+                                            <Typography
+                                                gutterBottom
+                                                variant="h6"
+                                                component="div">
+                                                {`Origin: ${item.origin}`}
+                                            </Typography>
+                                            <Typography
+                                                variant="body2"
+                                                color="text.secondary">
+                                                {item.description}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button size="small">Learn More</Button>
+                                        </CardActions>
+                                    </Card>
                                     </Grid>
                         }
                     </React.Fragment>
