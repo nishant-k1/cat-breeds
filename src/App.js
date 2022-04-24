@@ -5,6 +5,7 @@ import { Stack } from '@mui/material';
 
 function App({searchQuery, setSearchQuery}) {
   return (
+    // All App components
     <Stack className=".App">
       <Layout />
     </Stack>

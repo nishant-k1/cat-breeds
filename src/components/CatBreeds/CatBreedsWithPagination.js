@@ -11,17 +11,35 @@ import Pagination from '../Pagination/Pagination';
 
 const CatBreedsWithPagination = () => {
     const cat_breed_url = `https://api.thecatapi.com/v1/breeds`;
+
+    // setting default page for pagination
     const [page, setPage] = React.useState(1);
+
+     // fetched cat list from server
     const catBreedsList = useFetch(cat_breed_url, page);
+
+    // setting state to control the total no pages in pagination
     const [pageCount, setPageCount] = React.useState(null);
+
+    // state to control cat list per pagination page
     const [catBreeds, setCatBreeds] = React.useState([]);
 
+    // Applying pagination and item count per pagination page
     React.useEffect(() => {
         if(catBreedsList.length > 0){
+             // Setting item count per pagination page
             const itemCount = 9;
+
+             // Settnig total no. of pages for pagination
             setPageCount(() => Math.ceil(catBreedsList.length/itemCount));
+
+            // Setting index of the last item per pagination page
             const last_item_index = page * itemCount;
+
+            // Setting index of the first item per pagination page
             const first_item_index = last_item_index - itemCount;
+
+            // Setting list of total cat items respective to the every paination pages
             setCatBreeds(() => catBreedsList.slice(first_item_index, last_item_index));
         }
     }, [

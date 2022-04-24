@@ -6,8 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import '../../App.css';
 import { Container, Stack } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Search,
@@ -15,9 +13,11 @@ import {
 } from './search'
 
 const NavBar = ({searchQuery, setSearchQuery}) => {
+  // State to control the input search form control
   const [inputQuery, setInputQuery] = React.useState("");
 
   return (
+    // Rendering Navbar UI on the page
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Container>
