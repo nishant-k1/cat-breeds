@@ -11,28 +11,29 @@ import Pagination from '../Pagination/Pagination';
 
 const CatBreedsWithSearchedQuery = ({searchQuery}) => {
 
-    const cat_breed_url = `https://api.thecatapi.com/v1/breeds`;
+    const url = `https://api.thecatapi.com/v1/breeds`;
 
     // setting default page for pagination
     const [page, setPage] = React.useState(1);
 
     // fetched cat list from server
-    const catBreedsList = useFetch(cat_breed_url, page);
+    const {loading, error:networkError, list:catBreedList} = useFetch(url, page);
 
     // setting state to control the total no pages in pagination
     const [pageCount, setPageCount] = React.useState(null);
 
     // state to control searched cat list according to the search query
-    const [catBreedsSearched, setCatBreedsSearched] = React.useState([]);
+    const [catBreedSearchedList, setCatBreedSearchedList] = React.useState([]);
 
-    // state to control cat list per pagination page
-    const [catBreeds, setCatBreeds] = React.useState([]);
+    // state to control serached cat list per pagination page
+    const [catBreedSearchedPaginatedList, setCatBreedSearchedPaginatedList] = React.useState([]);
+
 
     React.useEffect(() => {
 
         // Searching list of items from the cat list as per serach query
-        if(catBreedsList.length > 0){
-            setCatBreedsSearched(() => (catBreedsList.filter(item => {
+        if(!loading){
+            setCatBreedSearchedList(() => (catBreedList.filter(item => {
                 if(item.name.replace(/\s/g, "").trim().toLowerCase()
                     .includes(searchQuery.replace(/\s/g, "").trim().toLowerCase())){
                     return item
@@ -42,13 +43,12 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
         }
 
     }, [
-        catBreedsList,
-        catBreedsList.length,
+        loading,
+        catBreedList,
+        catBreedList.length,
         searchQuery,
         pageCount,
         page,
-        catBreeds,
-        catBreeds.length,
     ]);
 
     //Applying pagination if searched item list length exceeds item count per pagination page
@@ -58,7 +58,7 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
         const itemCount = 9;
 
         // Settnig total no. of pages for pagination
-        setPageCount(() => Math.ceil(catBreedsList.length/itemCount));
+        setPageCount(() => Math.ceil(catBreedList.length/itemCount));
 
         // Setting index of the last item per pagination page
         const last_item_index = page * itemCount;
@@ -67,24 +67,22 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
         const first_item_index = last_item_index - itemCount;
 
         // Setting list of total searched cat items respective to the every paination pages
-        setCatBreeds(() => catBreedsSearched.slice(first_item_index, last_item_index));
+        setCatBreedSearchedPaginatedList(() => catBreedSearchedList.slice(first_item_index, last_item_index));
     }, [
-        catBreedsList,
-        catBreedsList.length,
+        catBreedList,
+        catBreedList.length,
         searchQuery,
-        catBreedsSearched,
-        catBreedsSearched.length,
+        catBreedSearchedList,
+        catBreedSearchedList.length,
         pageCount,
         page,
-        catBreeds,
-        catBreeds.length,
     ]);
 
     return (
         <React.Fragment>
             {
                 // Loader while list still getting fetched from server
-                !catBreedsSearched.length > 0
+                loading
                     &&  <Container sx={
                             {
                                 display:"grid",
@@ -96,8 +94,8 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                             <Loader />
                         </Container>
             }
-            {/* {
-                !catBreedsSearched[0]
+            {
+                !loading && catBreedSearchedList.length === 0
                     &&  <Container sx={
                             {
                                 display:"grid",
@@ -113,10 +111,10 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                                 Sorry!! No results found 😭
                             </Typography>
                         </Container>
-            } */}
+            }
             {
                 // Rendering list accoring to the searched query
-                catBreedsSearched.length > 0 && catBreedsSearched.length < 9
+                !loading && catBreedSearchedList.length < 9
                     &&  <Container>
 
                                 <Grid
@@ -125,7 +123,7 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                                     sx={{margin:"4rem 0"}}
                                 >
                                     {
-                                        catBreedsSearched.map(item => {
+                                        catBreedSearchedList.map(item => {
                                             return (
                                                 <React.Fragment key={item.id}>
                                                     {
@@ -170,7 +168,7 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
             }
             {
                 // Rendering list accoring to the searched query if list lenght exceeds length of item count per pagination page
-                catBreedsSearched.length > 9
+                !loading && catBreedSearchedList.length > 9
                     &&  <Container>
                             <Grid
                                 container
@@ -197,7 +195,7 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
                                     spacing={4}
                                 >
                                     {
-                                        catBreeds.map(item => {
+                                        catBreedSearchedPaginatedList.map(item => {
                                             return (
                                                 <React.Fragment key={item.id}>
                                                     {
