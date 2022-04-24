@@ -10,28 +10,30 @@ import { Grid } from '@mui/material';
 import Pagination from '../Pagination/Pagination';
 
 const CatBreedsWithPagination = () => {
-    const cat_breed_url = `https://api.thecatapi.com/v1/breeds`;
+    const url = `https://api.thecatapi.com/v1/breeds`;
 
     // setting default page for pagination
     const [page, setPage] = React.useState(1);
 
-     // fetched cat list from server
-    const catBreedsList = useFetch(cat_breed_url, page);
+    // fetched cat list from server
+    // const catBreedList = useFetch(cat_breed_url, page);
+
+    const {loading, error:networkError, list:catBreedList} = useFetch(url, page);
 
     // setting state to control the total no pages in pagination
     const [pageCount, setPageCount] = React.useState(null);
 
     // state to control cat list per pagination page
-    const [catBreeds, setCatBreeds] = React.useState([]);
+    const [catBreedListPaginated, setCatBreedListPaginated] = React.useState([]);
 
     // Applying pagination and item count per pagination page
     React.useEffect(() => {
-        if(catBreedsList.length > 0){
+        if(!loading){
              // Setting item count per pagination page
             const itemCount = 9;
 
-             // Settnig total no. of pages for pagination
-            setPageCount(() => Math.ceil(catBreedsList.length/itemCount));
+             // Setting total no. of pages for pagination
+            setPageCount(() => Math.ceil(catBreedList.length/itemCount));
 
             // Setting index of the last item per pagination page
             const last_item_index = page * itemCount;
@@ -40,32 +42,52 @@ const CatBreedsWithPagination = () => {
             const first_item_index = last_item_index - itemCount;
 
             // Setting list of total cat items respective to the every paination pages
-            setCatBreeds(() => catBreedsList.slice(first_item_index, last_item_index));
+            setCatBreedListPaginated(() => catBreedList.slice(first_item_index, last_item_index));
         }
     }, [
-        catBreedsList,
-        catBreedsList.length,
-        pageCount,
+        loading,
+        catBreedList,
+        catBreedList.length,
         page
     ]);
 
     return (
         <React.Fragment>
             {
-                !catBreeds.length > 0
-                &&  <Container sx={
-                        {
-                            display:"grid",
-                            justifyContent:"center",
-                            alignItems:'center',
-                            height:'80vh'
-                        }}
-                    >
-                        <Loader />
-                    </Container>
+                // rendering loader if list is still being fetched from server
+                loading
+                    &&  <Container sx={
+                            {
+                                display:"grid",
+                                justifyContent:"center",
+                                alignItems:'center',
+                                height:'80vh'
+                            }}
+                        >
+                            <Loader />
+                        </Container>
             }
             {
-               catBreeds.length > 0  && pageCount > 0
+                !loading && catBreedListPaginated.length === 0
+                    &&  <Container sx={
+                            {
+                                display:"grid",
+                                justifyContent:"center",
+                                alignItems:'center',
+                                height:'80vh'
+                            }}
+                        >
+                            <Typography
+                                gutterBottom
+                                variant="h4"
+                                component="div">
+                                Sorry!! No results found 😭
+                            </Typography>
+                        </Container>
+            }
+            {
+                // rendering below UI, if list is already fetched from server
+                !loading && catBreedListPaginated.length > 0
                     &&  <Container>
                             <Grid
                                 container
@@ -92,7 +114,7 @@ const CatBreedsWithPagination = () => {
                                     spacing={4}
                                 >
                                     {
-                                        catBreeds.map(item => {
+                                        catBreedListPaginated.map(item => {
                                             return (
                                                 <React.Fragment key={item.id}>
                                                     {
