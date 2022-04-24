@@ -24,7 +24,12 @@ const CatBreedsWithPagination = () => {
             const first_item_index = last_item_index - itemCount;
             setCatBreeds(() => catBreedsList.slice(first_item_index, last_item_index));
         }
-    }, [catBreedsList.length, pageCount, page])
+    }, [
+        catBreedsList,
+        catBreedsList.length,
+        pageCount,
+        page
+    ]);
 
     return (
         <React.Fragment>
