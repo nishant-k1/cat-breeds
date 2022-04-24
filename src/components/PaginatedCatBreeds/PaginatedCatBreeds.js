@@ -5,9 +5,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { Button, CardActions } from '@mui/material';
 
-const PaginatedCatBreeds = ({page, setPage, pageCount, catBreedListPaginated}) => {
+const PaginatedCatBreeds = ({
+    page,
+    setPage,
+    pageCount,
+    catBreedListPaginated
+}) => {
   return (
     <Container>
         <Grid
@@ -45,8 +50,7 @@ const PaginatedCatBreeds = ({page, setPage, pageCount, catBreedListPaginated}) =
                                                 md={4}
                                             >
                                                 <Card sx={{ maxWidth: 345 }}>
-                                                    <CardActionArea>
-                                                        <CardMedia
+                                                    <CardMedia
                                                             component="img"
                                                             height="140"
                                                             image={item.image.url}
@@ -71,7 +75,9 @@ const PaginatedCatBreeds = ({page, setPage, pageCount, catBreedListPaginated}) =
                                                             {item.description}
                                                         </Typography>
                                                     </CardContent>
-                                                    </CardActionArea>
+                                                    <CardActions>
+                                                        <Button size="small">Learn More</Button>
+                                                    </CardActions>
                                                 </Card>
                                             </Grid>
                                 }
