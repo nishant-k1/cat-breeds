@@ -3,12 +3,11 @@ import Layout from './components/Layout/Layout';
 import './App.css';
 import { Stack } from '@mui/material';
 
-function App() {
+function App({searchQuery, setSearchQuery}) {
   return (
     <Stack className=".App">
-        <Layout />
+      <Layout />
     </Stack>
-
   );
 }
 
