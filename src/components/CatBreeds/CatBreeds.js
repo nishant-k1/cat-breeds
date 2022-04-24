@@ -1,7 +1,6 @@
 import React from 'react'
-import CatBreedsWithSearchedQuery from './CatBreedsWithSearchedQuery';
-import CatBreedsWithPagination from './CatBreedsWithPagination';
-
+import CatBreedsWithSearchedQuery from '../SearchedCatBreeds/CatBreedsWithSearchedQuery';
+import CatBreedsWithPagination from '../PaginatedCatBreeds/CatBreedsWithPagination';
 
 const CatBreeds = ({searchQuery}) => {
 

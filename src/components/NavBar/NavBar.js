@@ -18,8 +18,8 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
 
   return (
     // Rendering Navbar UI on the page
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, marginBottom:'4rem'}}>
+      <AppBar position="fixed" sx={{ background:"#af8313" }}>
         <Container>
           <Toolbar>
             <Typography
