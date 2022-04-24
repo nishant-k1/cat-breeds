@@ -3,11 +3,17 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea, Container } from '@mui/material';
+import { Container } from '@mui/material';
+import { Button, CardActions } from '@mui/material';
 import { Grid } from '@mui/material';
 import Pagination from '../Pagination/Pagination';
 
-const SearchedPaginatedCatBreeds = ({page, setPage, pageCount, catBreedSearchedPaginatedList}) => {
+const SearchedPaginatedCatBreeds = ({
+    page,
+    setPage,
+    pageCount,
+    catBreedSearchedPaginatedList
+}) => {
   return (
     <Container>
         <Grid
@@ -47,8 +53,7 @@ const SearchedPaginatedCatBreeds = ({page, setPage, pageCount, catBreedSearchedP
                                                 md={4}
                                             >
                                                 <Card sx={{ maxWidth: 345 }}>
-                                                    <CardActionArea>
-                                                        <CardMedia
+                                                    <CardMedia
                                                             component="img"
                                                             height="140"
                                                             image={item.image.url}
@@ -62,12 +67,20 @@ const SearchedPaginatedCatBreeds = ({page, setPage, pageCount, catBreedSearchedP
                                                             {item.name}
                                                         </Typography>
                                                         <Typography
+                                                            gutterBottom
+                                                            variant="h6"
+                                                            component="div">
+                                                            {`Origin: ${item.origin}`}
+                                                        </Typography>
+                                                        <Typography
                                                             variant="body2"
                                                             color="text.secondary">
                                                             {item.description}
                                                         </Typography>
                                                     </CardContent>
-                                                    </CardActionArea>
+                                                    <CardActions>
+                                                        <Button size="small">Learn More</Button>
+                                                    </CardActions>
                                                 </Card>
                                             </Grid>
                                 }
