@@ -1,6 +1,8 @@
 import * as React from 'react';
 import HomePage from '../../pages/HomePage/HomePage';
 import NavBar from '../NavBar/NavBar'
+import CatDetails from '../../pages/CatDetails/CatDetails';
+import { Routes, Route } from "react-router-dom";
 
 const Layout = () => {
   // Setting state to control the input search query
@@ -13,7 +15,10 @@ const Layout = () => {
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-      <HomePage searchQuery={searchQuery} />
+      <Routes>
+        <Route path='/' element={<HomePage searchQuery={searchQuery} />} />
+        <Route path='/cat-details/:id' element={<CatDetails />} />
+      </Routes>
     </React.Fragment>
   );
 }
