@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/cat-breeds/static/css/main.ded040a5.css",
+    "main.js": "/cat-breeds/static/js/main.fd648528.js",
+    "static/js/787.acb1c073.chunk.js": "/cat-breeds/static/js/787.acb1c073.chunk.js",
+    "static/media/meow-cut.mp3": "/cat-breeds/static/media/meow-cut.3864fea5653de5a1875f.mp3",
+    "static/media/cat-logo.png": "/cat-breeds/static/media/cat-logo.077865db38fbc51a2aae.png",
+    "index.html": "/cat-breeds/index.html",
+    "main.ded040a5.css.map": "/cat-breeds/static/css/main.ded040a5.css.map",
+    "main.fd648528.js.map": "/cat-breeds/static/js/main.fd648528.js.map",
+    "787.acb1c073.chunk.js.map": "/cat-breeds/static/js/787.acb1c073.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ded040a5.css",
+    "static/js/main.fd648528.js"
+  ]
+}
