@@ -9,8 +9,9 @@ import ListItemText from '@mui/material/ListItemText';
 import {Link} from '@mui/material';
 import {Grid} from '@mui/material';
 import NoResultsFound from '../../components/NoResultsFound';
+import CatBreedsWithSearchedQuery from '../../components/SearchedCatBreeds/CatBreedsWithSearchedQuery';
 
-const CatDetails = () => {
+const CatDetails = ({searchQuery}) => {
   const {id} = useParams();
   const url = `https://api.thecatapi.com/v1/breeds/${id}`;
 
@@ -69,6 +70,10 @@ const CatDetails = () => {
       }
       {
         !loading && !item.name && <NoResultsFound />
+      }
+      {
+        // component to conditionally render cat list if there is a search qurery
+        searchQuery.length > 0 && <CatBreedsWithSearchedQuery searchQuery={searchQuery} />
       }
       {
         !loading && item.name
