@@ -65,10 +65,10 @@ const CatDetails = () => {
         networkError && <ShowError />
       }
       {
-        loading && <Container><Loader /></Container>
+        loading && <Loader />
       }
       {
-        !loading && !item.name && <Container><NoResultsFound /></Container>
+        !loading && !item.name && <NoResultsFound />
       }
       {
         !loading && item.name
