@@ -1,3 +1,21 @@
+# Home Page
+This cat breed application has a list of availabe cat breeds all over the world.
+The home page consites of 9 items per pagination.
+
+# Pagination
+Pagination has been implemented on the client side.
+Pagination is based on conditonal component rendering rather than route based rendering.
+A possible feature of route changes during pagination change is missing.
+
+# Cat Details Page
+For cat details page, the data fetched from the server misses the image url. So an image from the client side is used for representation purpose for all cat breeds. Also some of the cat details are missing from feteced data from server so it will show a blank space at missing data.
+
+# Deployment
+  This app has been deployed on github pages and the link for the home page is https://nishant-k-290195.github.io/cat-breeds
+
+# Media Play
+On home page load, automatic media play feature is impelemented.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
