@@ -7,6 +7,7 @@ import { Container } from '@mui/material';
 import { Button, CardActions } from '@mui/material';
 import { Grid } from '@mui/material';
 import Pagination from '../Pagination/Pagination';
+import { useNavigate } from 'react-router-dom';
 
 const SearchedPaginatedCatBreeds = ({
     page,
@@ -14,6 +15,8 @@ const SearchedPaginatedCatBreeds = ({
     pageCount,
     catBreedSearchedPaginatedList
 }) => {
+const navigate = useNavigate();
+
   return (
     <Container>
         <Grid
@@ -52,7 +55,10 @@ const SearchedPaginatedCatBreeds = ({
                                                 sm={6}
                                                 md={4}
                                             >
-                                                <Card sx={{ maxWidth: 345 }}>
+                                                <Card sx={{
+                                                    maxWidth: 345,
+                                                    boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
+                                                }}>
                                                     <CardMedia
                                                             component="img"
                                                             height="140"
@@ -79,8 +85,11 @@ const SearchedPaginatedCatBreeds = ({
                                                         </Typography>
                                                     </CardContent>
                                                     <CardActions>
-                                                        <Button size="small">Learn More</Button>
-                                                    </CardActions>
+                                                    <Button
+                                                        onClick={() => navigate(`/cat-details/${item.id}`)}
+                                                        size="small">
+                                                        Learn More
+                                                    </Button>                                                    </CardActions>
                                                 </Card>
                                             </Grid>
                                 }
