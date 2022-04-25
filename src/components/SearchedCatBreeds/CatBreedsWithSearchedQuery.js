@@ -40,7 +40,6 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
     }, [
         loading,
         catBreedList,
-        catBreedList.length,
         searchQuery,
         pageCount,
         page
@@ -49,26 +48,28 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
     //Applying pagination if searched item list length exceeds item count per pagination page
     React.useEffect(() => {
 
-        // Setting item count per pagination page
-        const itemCount = 9;
+        if(!loading){
 
-        // Settnig total no. of pages for pagination
-        setPageCount(() => Math.ceil(catBreedList.length/itemCount));
+            // Setting item count per pagination page
+            const itemCount = 9;
 
-        // Setting index of the last item per pagination page
-        const last_item_index = page * itemCount;
+            // Settnig total no. of pages for pagination
+            setPageCount(() => Math.ceil(catBreedList.length/itemCount));
 
-        // Setting index of the first item per pagination page
-        const first_item_index = last_item_index - itemCount;
+            // Setting index of the last item per pagination page
+            const last_item_index = page * itemCount;
 
-        // Setting list of total searched cat items respective to the every paination pages
-        setCatBreedSearchedPaginatedList(() => catBreedSearchedList.slice(first_item_index, last_item_index));
+            // Setting index of the first item per pagination page
+            const first_item_index = last_item_index - itemCount;
+
+            // Setting list of total searched cat items respective to the every paination pages
+            setCatBreedSearchedPaginatedList(() => catBreedSearchedList.slice(first_item_index, last_item_index));
+        }
     }, [
+        loading,
         catBreedList,
-        catBreedList.length,
         searchQuery,
         catBreedSearchedList,
-        catBreedSearchedList.length,
         pageCount,
         page
     ]);

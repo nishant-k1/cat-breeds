@@ -13,8 +13,6 @@ const CatBreedsWithPagination = () => {
     const [page, setPage] = React.useState(1);
 
     // fetched cat list from server
-    // const catBreedList = useFetch(cat_breed_url, page);
-
     const {loading, error:networkError, list:catBreedList} = useFetch(url, page);
 
     // setting state to control the total no pages in pagination
@@ -44,7 +42,6 @@ const CatBreedsWithPagination = () => {
     }, [
         loading,
         catBreedList,
-        catBreedList.length,
         page
     ]);
 
