@@ -5,14 +5,17 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import '../../App.css';
-import { Container, Stack } from '@mui/material';
+import { Button, Container, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import {
   Search,
   StyledInputBase
 } from './search'
+import { useNavigate } from "react-router-dom";
+
 
 const NavBar = ({searchQuery, setSearchQuery}) => {
+  const navigate = useNavigate();
   // State to control the input search form control
   const [inputQuery, setInputQuery] = React.useState("");
 
@@ -22,14 +25,27 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
       <AppBar position="fixed" sx={{ background:"#af8313" }}>
         <Container>
           <Toolbar>
-            <Typography
-              variant="h6"
+            <Button
+              variant="contained"
               noWrap
               component="div"
-              sx={{ display: { xs: 'none', sm: 'block' } }}
+              onClick={() => {navigate('/')}}
+              sx={{
+                  textDecoration:'none',
+                  textTransform:'none',
+                  boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
+                  background:"#896509",
+                  transition:".3s",
+                  '&:hover': {
+                    backgroundColor: '#896509',
+                    transform: 'scale(.92, 0.92)',
+                    transition:".3s",
+                    boxShadow: 'rgba(199, 117, 165, 0.6) 0px 8px 24px',
+                },
+              }}
             >
               Cat Breeds
-            </Typography>
+            </Button>
             <Box sx={{ flexGrow: 1 }} />
             <Stack direction="row" sx={{alignItems:"center"}}>
                 <Search >
