@@ -9,7 +9,7 @@ const HomePage = ({searchQuery}) => {
     <React.Fragment>
       <audio
         controls
-        autoplay
+        autoPlay
         style={{
             position:'fixed',
             bottom:'0',
