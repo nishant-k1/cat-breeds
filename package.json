@@ -2,7 +2,7 @@
   "name": "cat-breads",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nishant-k-290195.github.io/cat-breads/",
+  "homepage": "https://nishant-k-290195.github.io/cat-breeds/",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -14,6 +14,7 @@
     "gh-pages": "^3.2.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
