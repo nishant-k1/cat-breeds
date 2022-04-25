@@ -60,7 +60,7 @@ const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
                                         </CardContent>
                                         <CardActions>
                                         <Button
-                                            onClick={() => navigate(`/cat-breeds/${item.id}`)}
+                                            onClick={() => navigate(`//${item.id}`)}
                                             size="small">
                                             Learn More
                                         </Button>

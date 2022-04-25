@@ -28,7 +28,7 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
               variant="contained"
               alt="cat_logo"
               component="div"
-              onClick={() => {navigate('/cat-breeds')}}
+              onClick={() => {navigate('/')}}
               className="Logo"
             />
             <Box sx={{ flexGrow: 1 }} />

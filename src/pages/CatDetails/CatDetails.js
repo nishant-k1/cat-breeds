@@ -82,7 +82,7 @@ const CatDetails = ({searchQuery}) => {
           && <React.Fragment>
               <Container sx={{paddingTop:"4rem"}}>
                 <Button
-                 onClick={() => {navigate('/cat-breeds')}}
+                 onClick={() => {navigate('/')}}
                  sx={{marginBottom:"2rem"}}
                 >
                   Back

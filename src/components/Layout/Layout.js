@@ -18,10 +18,8 @@ const Layout = () => {
       />
       <Routes>
         <Route path="*" element={<NoResultsFound />} />
-        <Route path='/cat-breeds/*' element={<NoResultsFound />} />
-        <Route path='/cat-breeds/:id/*' element={<NoResultsFound />} />
-        <Route path='/cat-breeds' element={<HomePage searchQuery={searchQuery} />} />
-        <Route path='/cat-breeds/:id' element={<CatDetails searchQuery={searchQuery} />} />
+        <Route path='/' element={<HomePage searchQuery={searchQuery} />} />
+        <Route path='/:id' element={<CatDetails searchQuery={searchQuery} />} />
       </Routes>
     </React.Fragment>
   );
