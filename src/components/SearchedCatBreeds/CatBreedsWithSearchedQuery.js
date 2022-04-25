@@ -80,17 +80,7 @@ const CatBreedsWithSearchedQuery = ({searchQuery}) => {
             }
             {
                 // Loader while list still getting fetched from server
-                loading
-                    &&  <Container sx={
-                            {
-                                display:"grid",
-                                justifyContent:"center",
-                                alignItems:'center',
-                                height:'80vh'
-                            }}
-                        >
-                            <Loader />
-                        </Container>
+                loading &&  <Loader />
             }
             {
                 !loading && catBreedSearchedList.length === 0
