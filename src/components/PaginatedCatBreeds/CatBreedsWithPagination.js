@@ -3,7 +3,6 @@ import { useFetch } from '../../customHooks/useFetch';
 import  Loader from '../Loader/Loader';
 import NoResultsFound from '../NoResultsFound/index.js';
 import PaginatedCatBreeds from './PaginatedCatBreeds';
-import { Container } from '@mui/material';
 import ShowError from '../ShowError/ShowError';
 
 const CatBreedsWithPagination = () => {
@@ -24,10 +23,10 @@ const CatBreedsWithPagination = () => {
     // Applying pagination and item count per pagination page
     React.useEffect(() => {
         if(!loading){
-             // Setting item count per pagination page
+            // Setting item count per pagination page
             const itemCount = 9;
 
-             // Setting total no. of pages for pagination
+            // Setting total pagination pages
             setPageCount(() => Math.ceil(catBreedList.length/itemCount));
 
             // Setting index of the last item per pagination page
@@ -36,7 +35,7 @@ const CatBreedsWithPagination = () => {
             // Setting index of the first item per pagination page
             const first_item_index = last_item_index - itemCount;
 
-            // Setting list of total cat items respective to the every paination pages
+            // Setting list of total cat items respective to the every pagination pages
             setCatBreedListPaginated(() => catBreedList.slice(first_item_index, last_item_index));
         }
     }, [
