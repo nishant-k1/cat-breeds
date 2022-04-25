@@ -35,7 +35,7 @@ const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
                                     }}>
                                         <CardMedia
                                                 component="img"
-                                                height="140"
+                                                sx={{height:'100%', width:'100%'}}
                                                 image={item.image.url}
                                                 alt={item.name}
                                             />
