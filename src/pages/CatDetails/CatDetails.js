@@ -78,9 +78,20 @@ const CatDetails = () => {
                     />
                   </Grid>
                   <Grid item xs={12} md={6} >
-                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} >
                     <ListItem>
                       <ListItemText primary="Name" secondary={item.name} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary="Life Span" secondary={`(${item.life_span}) Years`} />
+                    </ListItem>
+                    <ListItem>
+                      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                        <ListItem sx={{padding:0}}>
+                          <ListItemText primary="Imperial Weight" secondary={item.weight.imperial} />
+                          <ListItemText primary="Metric Weight" secondary={item.weight.metric} />
+                        </ListItem>
+                      </List>
                     </ListItem>
                     <ListItem>
                       <ListItemText primary="CFA url" secondary={<Link>{item.cfa_url}</Link>} />
@@ -90,6 +101,9 @@ const CatDetails = () => {
                     </ListItem>
                     <ListItem>
                       <ListItemText primary="Vcahospitals url" secondary={<Link>{item.vcahospitals_url}</Link>} />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemText primary="Wikipedia url" secondary={<Link>{item.wikipedia_url}</Link>} />
                     </ListItem>
                     <ListItem>
                       <ListItemText primary="Temperament" secondary={item.temperament} />
