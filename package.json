@@ -1,8 +1,8 @@
 {
-  "name": "cat-breads",
+  "name": "cat-breeds",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://nishant-k-290195.github.io/cat-breeds/",
+  "homepage": "https://nishant-k-290195.github.io/cat-breeds",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
