@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import '../../App.css';
-import { Button, Container, Stack } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Search, StyledInputBase } from './search';
 import { useNavigate } from "react-router-dom";
