@@ -3,8 +3,7 @@ import Layout from './components/Layout/Layout';
 import './App.css';
 import { Stack } from '@mui/material';
 
-function App({searchQuery, setSearchQuery}) {
-
+function App() {
   return (
     <React.Fragment>
       <Stack className=".App">

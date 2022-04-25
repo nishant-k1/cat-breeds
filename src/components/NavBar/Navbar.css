@@ -1,0 +1,14 @@
+.Logo{
+    text-decoration:'none';
+    max-width:4rem;
+    max-height:4rem;
+    padding:.5rem 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition:.3s;
+    margin-right:1rem;
+}
+
+.Logo:hover{
+    transform: scale(.9);
+    transition:.3s;
+}

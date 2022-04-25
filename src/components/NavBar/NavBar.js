@@ -6,13 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import '../../App.css';
 import { Button, Container, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import {
-  Search,
-  StyledInputBase
-} from './search'
+import { Search, StyledInputBase } from './search';
 import { useNavigate } from "react-router-dom";
 import Divider from '@mui/material/Divider';
-
+import catLogo from '../../assets/cat-logo.png';
+import './Navbar.css';
 
 const NavBar = ({searchQuery, setSearchQuery}) => {
   const navigate = useNavigate();
@@ -25,29 +23,15 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
       <AppBar position="fixed" sx={{ background:"#af8313" }}>
         <Container>
           <Toolbar>
-            <Button
+            <img
+              src={catLogo}
               variant="contained"
               noWrap
+              alt="cat_logo"
               component="div"
               onClick={() => {navigate('/cat-breeds')}}
-              sx={{
-                  textDecoration:'none',
-                  minWidth:"fit-content",
-                  textTransform:'none',
-                  boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-                  background:"#896509",
-                  transition:".3s",
-                  marginRight:"1rem",
-                  '&:hover': {
-                    backgroundColor: '#896509',
-                    transform: 'scale(.92, 0.92)',
-                    transition:".3s",
-                    boxShadow: 'rgba(199, 117, 165, 0.6) 0px 8px 24px',
-                },
-              }}
-            >
-              Cat Breeds
-            </Button>
+              className="Logo"
+            />
             <Box sx={{ flexGrow: 1 }} />
                 <Search>
                 <Stack direction="row" spacing={2} sx={{alignItems:"center"}} divider={<Divider orientation="vertical" flexItem />}>
