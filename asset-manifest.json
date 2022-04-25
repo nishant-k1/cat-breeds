@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.ded040a5.css",
-    "main.js": "/static/js/main.206a5ca6.js",
+    "main.js": "/static/js/main.fe78afbe.js",
     "static/js/787.acb1c073.chunk.js": "/static/js/787.acb1c073.chunk.js",
     "static/media/meow-cut.mp3": "/static/media/meow-cut.3864fea5653de5a1875f.mp3",
     "static/media/cat-logo.png": "/static/media/cat-logo.077865db38fbc51a2aae.png",
     "index.html": "/index.html",
     "main.ded040a5.css.map": "/static/css/main.ded040a5.css.map",
-    "main.206a5ca6.js.map": "/static/js/main.206a5ca6.js.map",
+    "main.fe78afbe.js.map": "/static/js/main.fe78afbe.js.map",
     "787.acb1c073.chunk.js.map": "/static/js/787.acb1c073.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ded040a5.css",
-    "static/js/main.206a5ca6.js"
+    "static/js/main.fe78afbe.js"
   ]
 }
