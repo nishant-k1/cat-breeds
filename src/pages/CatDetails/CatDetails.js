@@ -115,16 +115,16 @@ const CatDetails = ({searchQuery}) => {
                             </ListItem>
                     }
                     <ListItem>
-                      <ListItemText primary="CFA url" secondary={<Link>{item.cfa_url}</Link>} />
+                      <ListItemText primary="CFA url" secondary={<Link href={item.cfa_url} >{item.cfa_url}</Link>} />
                     </ListItem>
                     <ListItem>
-                      <ListItemText primary="Vetstreet url" secondary={<Link>{item.vetstreet_url}</Link>} />
+                      <ListItemText primary="Vetstreet url" secondary={<Link href={item.cfa_url}>{item.vetstreet_url}</Link>} />
                     </ListItem>
                     <ListItem>
-                      <ListItemText primary="Vcahospitals url" secondary={<Link>{item.vcahospitals_url}</Link>} />
+                      <ListItemText primary="Vcahospitals url" secondary={<Link href={item.cfa_url}>{item.vcahospitals_url}</Link>} />
                     </ListItem>
                     <ListItem>
-                      <ListItemText primary="Wikipedia url" secondary={<Link>{item.wikipedia_url}</Link>} />
+                      <ListItemText primary="Wikipedia url" secondary={<Link href={item.cfa_url}>{item.wikipedia_url}</Link>} />
                     </ListItem>
                     <ListItem>
                       <ListItemText primary="Temperament" secondary={item.temperament} />
