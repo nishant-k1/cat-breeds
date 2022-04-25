@@ -26,7 +26,6 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
             <img
               src={catLogo}
               variant="contained"
-              noWrap
               alt="cat_logo"
               component="div"
               onClick={() => {navigate('/cat-breeds')}}
