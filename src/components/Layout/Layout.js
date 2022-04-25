@@ -3,6 +3,7 @@ import HomePage from '../../pages/HomePage/HomePage';
 import NavBar from '../NavBar/NavBar'
 import CatDetails from '../../pages/CatDetails/CatDetails';
 import { Routes, Route } from "react-router-dom";
+import NoResultsFound from '../NoResultsFound';
 
 const Layout = () => {
   // Setting state to control the input search query
@@ -16,6 +17,9 @@ const Layout = () => {
         setSearchQuery={setSearchQuery}
       />
       <Routes>
+        <Route path="*" element={<NoResultsFound />} />
+        <Route path='/cat-breeds/*' element={<NoResultsFound />} />
+        <Route path='/cat-breeds/:id/*' element={<NoResultsFound />} />
         <Route path='/cat-breeds' element={<HomePage searchQuery={searchQuery} />} />
         <Route path='/cat-breeds/:id' element={<CatDetails />} />
       </Routes>

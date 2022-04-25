@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import {Link} from '@mui/material';
 import {Grid} from '@mui/material';
+import NoResultsFound from '../../components/NoResultsFound';
 
 const CatDetails = () => {
   const {id} = useParams();
@@ -64,9 +65,13 @@ const CatDetails = () => {
         networkError && <ShowError />
       }
       {
-        loading && <Container><Loader /></Container>}
+        loading && <Container><Loader /></Container>
+      }
       {
-        !loading
+        !loading && !item.name && <Container><NoResultsFound /></Container>
+      }
+      {
+        !loading && item.name
           && <React.Fragment>
               <Container sx={{paddingTop:"4rem"}}>
                 <Grid container spacing={6}>
@@ -85,14 +90,17 @@ const CatDetails = () => {
                     <ListItem>
                       <ListItemText primary="Life Span" secondary={`(${item.life_span}) Years`} />
                     </ListItem>
-                    <ListItem>
-                      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                        <ListItem sx={{padding:0}}>
-                          <ListItemText primary="Imperial Weight" secondary={item.weight.imperial} />
-                          <ListItemText primary="Metric Weight" secondary={item.weight.metric} />
-                        </ListItem>
-                      </List>
-                    </ListItem>
+                    {
+                      item.weight
+                        && <ListItem>
+                              <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                                <ListItem sx={{padding:0}}>
+                                  <ListItemText primary="Imperial Weight" secondary={item.weight.imperial} />
+                                  <ListItemText primary="Metric Weight" secondary={item.weight.metric} />
+                                </ListItem>
+                              </List>
+                            </ListItem>
+                    }
                     <ListItem>
                       <ListItemText primary="CFA url" secondary={<Link>{item.cfa_url}</Link>} />
                     </ListItem>
