@@ -55,16 +55,8 @@ const CatBreedsWithPagination = () => {
             }
             {
                 // rendering loader if list is still being fetched from server
-                loading
-                    &&  <Container sx={{
-                                display:"grid",
-                                justifyContent:"center",
-                                alignItems:'center',
-                                height:'80vh'
-                            }}
-                        >
-                            <Loader />
-                        </Container>
+                loading && <Loader />
+
             }
             {
                 !loading && catBreedListPaginated.length === 0
