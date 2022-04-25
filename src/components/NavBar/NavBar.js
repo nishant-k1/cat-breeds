@@ -11,6 +11,7 @@ import {
   StyledInputBase
 } from './search'
 import { useNavigate } from "react-router-dom";
+import Divider from '@mui/material/Divider';
 
 
 const NavBar = ({searchQuery, setSearchQuery}) => {
@@ -31,10 +32,12 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
               onClick={() => {navigate('/cat-breeds')}}
               sx={{
                   textDecoration:'none',
+                  minWidth:"fit-content",
                   textTransform:'none',
                   boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
                   background:"#896509",
                   transition:".3s",
+                  marginRight:"1rem",
                   '&:hover': {
                     backgroundColor: '#896509',
                     transform: 'scale(.92, 0.92)',
@@ -46,28 +49,29 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
               Cat Breeds
             </Button>
             <Box sx={{ flexGrow: 1 }} />
-            <Stack direction="row" sx={{alignItems:"center"}}>
-                <Search >
+                <Search>
+                <Stack direction="row" spacing={2} sx={{alignItems:"center"}} divider={<Divider orientation="vertical" flexItem />}>
                   <StyledInputBase
-                    placeholder="Search…"
-                    inputProps={{ 'aria-label': 'search' }}
-                    value={inputQuery}
-                    onChange={event => {setInputQuery(event.target.value)}}
-                    onKeyDown={(event) => {
-                      if(event.key === 'Enter'){
-                        setSearchQuery(inputQuery);
-                      }
-                    }}
-                  />
-                  <IconButton
-                    size="large"
-                    onClick={() => {setSearchQuery(inputQuery)}}
-                    color="inherit"
-                  >
-                  <SearchIcon />
-                </IconButton>
-              </Search>
-            </Stack>
+                      placeholder="Search…"
+                      inputProps={{ 'aria-label': 'search' }}
+                      value={inputQuery}
+                      onChange={event => {setInputQuery(event.target.value)}}
+                      onKeyDown={(event) => {
+                        if(event.key === 'Enter'){
+                          setSearchQuery(inputQuery);
+                        }
+                      }}
+                    />
+                    <IconButton
+                      size="large"
+                      onClick={() => {setSearchQuery(inputQuery)}}
+                      color="inherit"
+                    >
+                    <SearchIcon />
+                  </IconButton>
+                  </Stack>
+                </Search>
+
             {/* <Box sx={{ flexGrow: 1 }} /> */}
           </Toolbar>
         </Container>
