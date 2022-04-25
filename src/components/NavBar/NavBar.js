@@ -29,7 +29,7 @@ const NavBar = ({searchQuery, setSearchQuery}) => {
               variant="contained"
               noWrap
               component="div"
-              onClick={() => {navigate('/')}}
+              onClick={() => {navigate('/cat-breeds')}}
               sx={{
                   textDecoration:'none',
                   textTransform:'none',

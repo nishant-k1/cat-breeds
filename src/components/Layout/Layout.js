@@ -16,8 +16,8 @@ const Layout = () => {
         setSearchQuery={setSearchQuery}
       />
       <Routes>
-        <Route path='/' element={<HomePage searchQuery={searchQuery} />} />
-        <Route path='/cat-details/:id' element={<CatDetails />} />
+        <Route path='/cat-breeds' element={<HomePage searchQuery={searchQuery} />} />
+        <Route path='/cat-breeds/:id' element={<CatDetails />} />
       </Routes>
     </React.Fragment>
   );

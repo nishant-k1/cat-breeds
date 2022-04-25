@@ -86,7 +86,7 @@ const navigate = useNavigate();
                                                     </CardContent>
                                                     <CardActions>
                                                     <Button
-                                                        onClick={() => navigate(`/cat-details/${item.id}`)}
+                                                        onClick={() => navigate(`/cat-breeds/${item.id}`)}
                                                         size="small">
                                                         Learn More
                                                     </Button>                                                    </CardActions>
