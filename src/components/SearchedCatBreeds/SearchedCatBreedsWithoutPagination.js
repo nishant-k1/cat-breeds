@@ -6,9 +6,11 @@ import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
 import { Button, CardActions } from '@mui/material';
 import { Grid } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
-  return (
+    const navigate = useNavigate();
+    return (
     <Container>
     <Grid
         container
@@ -27,7 +29,10 @@ const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
                                         sm={6}
                                         md={4}
                                     >
-                                    <Card sx={{ maxWidth: 345 }}>
+                                    <Card sx={{
+                                        maxWidth: 345,
+                                        boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
+                                    }}>
                                         <CardMedia
                                                 component="img"
                                                 height="140"
@@ -54,7 +59,11 @@ const SearchedCatBreedsWithoutPagination = ({catBreedSearchedList}) => {
                                             </Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Button size="small">Learn More</Button>
+                                        <Button
+                                            onClick={() => navigate(`/cat-details/${item.id}`)}
+                                            size="small">
+                                            Learn More
+                                        </Button>
                                         </CardActions>
                                     </Card>
                                     </Grid>
