@@ -6,14 +6,16 @@ import ShowError from '../../components/ShowError/ShowError';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import {Link} from '@mui/material';
+import { Link, Button } from '@mui/material';
 import {Grid} from '@mui/material';
 import NoResultsFound from '../../components/NoResultsFound';
 import CatBreedsWithSearchedQuery from '../../components/SearchedCatBreeds/CatBreedsWithSearchedQuery';
+import { useNavigate } from "react-router-dom";
 
 const CatDetails = ({searchQuery}) => {
   const {id} = useParams();
   const url = `https://api.thecatapi.com/v1/breeds/${id}`;
+  const navigate = useNavigate();
 
   // State to control the list data fetched from server
   const [data, setData] = React.useState({
@@ -76,9 +78,15 @@ const CatDetails = ({searchQuery}) => {
         searchQuery.length > 0 && <CatBreedsWithSearchedQuery searchQuery={searchQuery} />
       }
       {
-        !loading && item.name
+        searchQuery==="" && !loading && item.name
           && <React.Fragment>
               <Container sx={{paddingTop:"4rem"}}>
+                <Button
+                 onClick={() => {navigate('/cat-breeds')}}
+                 sx={{marginBottom:"2rem"}}
+                >
+                  Back
+                </Button>
                 <Grid container spacing={6}>
                   <Grid item xs={12} md={6} >
                     <img
